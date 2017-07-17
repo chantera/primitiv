@@ -21,10 +21,9 @@
 #include <vector>
 
 #include <primitiv/primitiv.h>
-#include <primitiv/primitiv_cuda.h>
 
 using primitiv::Device;
-using primitiv::CUDADevice;
+using primitiv::CPUDevice;
 using primitiv::Graph;
 using primitiv::Node;
 using primitiv::Parameter;
@@ -87,8 +86,8 @@ int main() {
   vector<float> test_inputs = ::load_images("data/t10k-images-idx3-ubyte", NUM_TEST_SAMPLES);
   vector<char> test_labels = ::load_labels("data/t10k-labels-idx1-ubyte", NUM_TEST_SAMPLES);
 
-  // Uses GPU.
-  CUDADevice dev(0);
+  // Uses CPU.
+  CPUDevice dev;
   Device::set_default_device(dev);
 
   // Parameters for the multilayer perceptron.
